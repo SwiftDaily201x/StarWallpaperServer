@@ -17,7 +17,7 @@ http.createServer(function (request, response) {
     	})
     	res.on("end", function(){
         console.log('eeee:')
-        response.writeHead('aaa')
+        response.writeHead(200, {'Content-Type': 'text/html'})
         response.write(resData.toString())
         response.end()
     	})
@@ -26,6 +26,9 @@ http.createServer(function (request, response) {
   else
   {
     console.log('cccc:')
+    response.writeHead(200, {'Content-Type': 'text/html'})
+    response.write('You need keyword, imgWidth and imgHeight!')
+    response.end()
   }
 }).listen(18080)
 console.log('GetAppIcon is running.')
