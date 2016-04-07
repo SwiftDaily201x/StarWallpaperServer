@@ -26,9 +26,6 @@ http.createServer(function (request, response) {
   else
   {
     console.log('cccc:')
-    response.writeHead('aaa')
-    response.write('You need keyword, imgWidth and imgHeight!')
-    response.end()
   }
 }).listen(18080)
 console.log('GetAppIcon is running.')
