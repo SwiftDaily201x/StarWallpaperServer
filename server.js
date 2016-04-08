@@ -13,7 +13,7 @@ http.createServer(function (request, response) {
        	resData.push(chunk)
     	})
     	res.on("end", function(){
-        response.writeHead(200, {'Content-Type': 'text/json'})
+        response.writeHead(200, {'Content-Type': 'text/plain'})
         response.write(resData.toString())
         response.end()
     	})
@@ -21,7 +21,7 @@ http.createServer(function (request, response) {
   }	
   else
   {
-    response.writeHead(200, {'Content-Type': 'text/json'})
+    response.writeHead(200, {'Content-Type': 'text/plain'})
     response.write('You need keyword, imgWidth and imgHeight!')
     response.end()
   }
