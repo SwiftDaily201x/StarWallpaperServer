@@ -1,6 +1,7 @@
 var http = require('http')
 var url = require("url")
 var fs = require('fs')
+var BufferHelper = require('bufferhelper');
 http.createServer(function (request, response) {
   var arg = url.parse(request.url,true).query
   if (arg.keyword && arg.imgWidth && arg.imgHeight) 
