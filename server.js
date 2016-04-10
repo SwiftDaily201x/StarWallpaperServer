@@ -8,13 +8,14 @@ http.createServer(function (request, response) {
     var strUrl = 'http://api.lovebizhi.com/iphone_v3.php?a=search&kw='+arg.keyword+'&client_id=1002&model_id=100&screen_width='+arg.imgWidth+'&screen_height='+arg.imgHeight+'&bizhi_width='+arg.imgWidth+'&bizhi_height='+arg.imgHeight
     http.get(strUrl, function(res){
     	res.setEncoding("utf-8")
-    	var resData = []
+    	var bufferHelper = new BufferHelper();
     	res.on("data", function(chunk){
-       	resData.push(chunk)
+       	bufferHelper.concat(chunk);
     	})
     	res.on("end", function(){
+        var result = bufferHelper.toBuffer().toString();
         response.writeHead(200, {'Content-Type': 'text/json'})
-        response.write(resData.toString())
+        response.write(result)
         response.end()
     	})
 	  })
