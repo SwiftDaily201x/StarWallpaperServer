@@ -10,8 +10,7 @@ http.createServer(function (request, response) {
     	res.setEncoding("utf-8")
     	var resData = []
     	res.on("data", function(chunk){
-       	chunk.copy(resData, pos);
-        pos += chunk.length;
+       	resData.push(chunk)
     	})
     	res.on("end", function(){
         response.writeHead(200, {'Content-Type': 'text/json'})
